@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>温医2026十门联考题库</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --pri:#7c3aed;--pri-l:#a78bfa;--pri-d:#6d28d9;--pri-bg:rgba(124,58,237,.06);
+  --acc:#06b6d4;--acc-bg:rgba(6,182,212,.08);
+  --bg:#0f172a;--bg2:#1e293b;--card:#1e293b;--card2:#334155;
+  --text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;
+  --ok:#34d399;--ok-bg:rgba(52,211,153,.12);
+  --err:#f87171;--err-bg:rgba(248,113,113,.12);
+  --warn:#fbbf24;--warn-bg:rgba(251,191,36,.12);
+  --border:#334155;--border2:#475569;
+  --r:16px;
+  --sh:0 4px 24px rgba(0,0,0,.25);
+  --sh2:0 8px 32px rgba(0,0,0,.35);
+  --glass:rgba(30,41,59,.7);
+}
+html{font-size:15px;scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--text);min-height:100vh;
+  background-image:radial-gradient(ellipse at 20% 0%,rgba(124,58,237,.12) 0%,transparent 50%),
+                    radial-gradient(ellipse at 80% 100%,rgba(6,182,212,.08) 0%,transparent 50%);
+}
+a{color:var(--pri-l);text-decoration:none}
+::selection{background:var(--pri);color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* ===== Layout ===== */
+.app{max-width:880px;margin:0 auto;padding:16px 12px 80px}
+
+/* ===== Header ===== */
+.hdr{
+  background:linear-gradient(135deg,#7c3aed 0%,#2563eb 50%,#06b6d4 100%);
+  padding:28px 28px 22px;border-radius:var(--r);margin-bottom:20px;
+  position:relative;overflow:hidden;
+  box-shadow:0 8px 32px rgba(124,58,237,.3);
+}
+.hdr::before{
+  content:'';position:absolute;top:-60%;right:-10%;width:320px;height:320px;
+  background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 70%);
+  border-radius:50%;
+}
+.hdr::after{
+  content:'';position:absolute;bottom:-40%;left:10%;width:200px;height:200px;
+  background:radial-gradient(circle,rgba(255,255,255,.06) 0%,transparent 70%);
+  border-radius:50%;
+}
+.hdr h1{font-size:1.5rem;font-weight:800;position:relative;z-index:1;
+  letter-spacing:-0.02em;text-shadow:0 2px 8px rgba(0,0,0,.2)}
+.hdr p{font-size:.85rem;opacity:.9;margin-top:4px;position:relative;z-index:1;font-weight:500}
+.hdr .stats{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap;position:relative;z-index:1}
+.hdr .stat{
+  background:rgba(255,255,255,.12);backdrop-filter:blur(8px);
+  padding:5px 14px;border-radius:20px;font-size:.72rem;font-weight:600;
+  border:1px solid rgba(255,255,255,.15);
+  transition:transform .15s;
+}
+.hdr .stat:hover{transform:scale(1.05)}
+
+/* ===== Tabs ===== */
+.tabs{
+  display:flex;gap:4px;
+  background:var(--card);
+  padding:4px;border-radius:var(--r);margin-bottom:20px;
+  box-shadow:var(--sh);
+  border:1px solid var(--border);
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+}
+.tab{
+  flex:1;padding:11px 8px;border:none;background:transparent;
+  border-radius:12px;cursor:pointer;font-size:.8rem;font-weight:600;
+  color:var(--text2);transition:all .2s;white-space:nowrap;
+}
+.tab:hover{background:var(--card2);color:var(--text)}
+.tab.on{
+  background:linear-gradient(135deg,var(--pri),#2563eb);
+  color:#fff;box-shadow:0 2px 12px rgba(124,58,237,.4);
+}
+
+/* ===== Subject Grid ===== */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:20px}
+.sc{
+  background:var(--card);border-radius:var(--r);padding:16px 12px;
+  text-align:center;cursor:pointer;
+  border:2px solid transparent;transition:all .2s;
+  box-shadow:var(--sh);position:relative;overflow:hidden;
+}
+.sc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--pri),var(--acc));
+  opacity:0;transition:opacity .2s;
+}
+.sc:hover{border-color:var(--pri-l);transform:translateY(-2px);box-shadow:var(--sh2)}
+.sc:hover::before{opacity:1}
+.sc.on{border-color:var(--pri);background:var(--pri-bg)}
+.sc.on::before{opacity:1}
+.sc .ic{font-size:1.6rem;margin-bottom:6px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2))}
+.sc h3{font-size:.78rem;font-weight:700;line-height:1.3;margin-bottom:4px;color:var(--text)}
+.sc .p{font-size:.68rem;color:var(--text3);font-weight:500}
+.sc .bar{height:4px;background:var(--card2);border-radius:3px;margin-top:8px;overflow:hidden}
+.sc .bar .f{height:100%;background:linear-gradient(90deg,var(--pri),var(--acc));border-radius:3px;transition:width .4s ease}
+
+/* ===== Question Area ===== */
+.qa{
+  background:var(--card);border-radius:var(--r);padding:24px;
+  box-shadow:var(--sh);margin-bottom:16px;
+  border:1px solid var(--border);
+}
+.qi{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.qi .nfo{font-size:.8rem;color:var(--text2);font-weight:500}
+.qi .nfo b{color:var(--pri-l);font-weight:700}
+.qi .acts{display:flex;gap:10px;align-items:center}
+.sbtn{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--text3);padding:2px;transition:all .2s}
+.sbtn:hover{transform:scale(1.2)}
+.sbtn.on{color:var(--warn);filter:drop-shadow(0 0 6px rgba(251,191,36,.5))}
+.qt{
+  font-size:.95rem;line-height:1.9;margin-bottom:20px;padding:16px 18px;
+  background:var(--bg);border-radius:12px;
+  border-left:4px solid var(--pri);
+  color:var(--text);
+}
+.qt .bd{
+  display:inline-block;background:linear-gradient(135deg,var(--warn),#f59e0b);
+  color:#000;font-size:.62rem;padding:2px 8px;border-radius:4px;
+  margin-right:4px;vertical-align:middle;font-weight:700;letter-spacing:.02em;
+}
+
+/* ===== Options ===== */
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 18px;
+  border:2px solid var(--border);border-radius:12px;
+  cursor:pointer;transition:all .15s;
+  font-size:.9rem;line-height:1.7;user-select:none;
+  background:var(--card);
+}
+.opt:hover{border-color:var(--pri-l);background:var(--pri-bg);transform:translateX(4px)}
+.opt.sel{border-color:var(--pri);background:var(--pri-bg);box-shadow:0 0 0 1px var(--pri)}
+.opt.ok{border-color:var(--ok);background:var(--ok-bg)}
+.opt.no{border-color:var(--err);background:var(--err-bg)}
+.opt.sh{border-color:var(--ok);background:var(--ok-bg)}
+.opt .lb{
+  min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;background:var(--card2);
+  font-weight:700;font-size:.8rem;flex-shrink:0;transition:all .15s;
+  border:2px solid var(--border);
+}
+.opt.sel .lb{background:var(--pri);color:#fff;border-color:var(--pri)}
+.opt.ok .lb{background:var(--ok);color:#000;border-color:var(--ok)}
+.opt.no .lb{background:var(--err);color:#fff;border-color:var(--err)}
+.opt.sh .lb{background:var(--ok);color:#000;border-color:var(--ok)}
+
+/* ===== Answer Box ===== */
+.ab{
+  margin-top:18px;padding:16px 18px;border-radius:12px;
+  background:var(--ok-bg);border:1px solid rgba(52,211,153,.25);
+}
+.ab.wb{background:var(--err-bg);border-color:rgba(248,113,113,.25)}
+.ab h4{color:var(--ok);font-size:.88rem;margin-bottom:6px;font-weight:700}
+.ab.wb h4{color:var(--err)}
+.ab .ex{font-size:.83rem;line-height:1.8;color:var(--text2);margin-top:8px}
+.ab .ex b{color:var(--text)}
+.ab .hi{font-size:.72rem;color:var(--text3);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+
+/* ===== Buttons ===== */
+.br{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.btn{
+  padding:11px 22px;border:none;border-radius:10px;cursor:pointer;
+  font-size:.84rem;font-weight:700;transition:all .15s;
+  display:inline-flex;align-items:center;gap:6px;
+  letter-spacing:.01em;
+}
+.btn:active{transform:scale(.96)}
+.bp{
+  background:linear-gradient(135deg,var(--pri),#2563eb);color:#fff;
+  box-shadow:0 4px 16px rgba(124,58,237,.35);
+}
+.bp:hover{box-shadow:0 6px 24px rgba(124,58,237,.5);transform:translateY(-1px)}
+.bo{
+  background:var(--card);color:var(--pri-l);
+  border:2px solid var(--border);
+}
+.bo:hover{border-color:var(--pri-l);background:var(--pri-bg)}
+.bg{background:linear-gradient(135deg,#059669,var(--ok));color:#000;box-shadow:0 4px 16px rgba(52,211,153,.3)}
+.be{background:linear-gradient(135deg,#dc2626,var(--err));color:#fff;box-shadow:0 4px 16px rgba(248,113,113,.3)}
+.btn:disabled{opacity:.35;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+
+/* ===== Question Grid ===== */
+.qgr{display:flex;flex-wrap:wrap;gap:4px;margin-top:12px}
+.qg{
+  width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+  border-radius:8px;font-size:.68rem;cursor:pointer;
+  border:1px solid var(--border);background:var(--card);
+  transition:all .12s;font-weight:600;color:var(--text2);
+}
+.qg:hover{border-color:var(--pri-l);color:var(--text);background:var(--pri-bg)}
+.qg.cur{border-color:var(--pri);background:var(--pri-bg);color:var(--pri-l);font-weight:800;box-shadow:0 0 0 1px var(--pri)}
+.qg.dn{background:var(--ok);color:#000;border-color:var(--ok)}
+.qg.fl{background:var(--err);color:#fff;border-color:var(--err)}
+.qg.fv{box-shadow:inset 0 0 0 2px var(--warn)}
+
+/* ===== Timer ===== */
+.timer{
+  font-size:1.05rem;font-weight:800;color:var(--err);
+  font-variant-numeric:tabular-nums;
+  text-shadow:0 0 12px rgba(248,113,113,.4);
+}
+
+/* ===== Result Page ===== */
+.res{text-align:center;padding:36px}
+.res h2{font-size:1.3rem;margin-bottom:8px}
+.res .sc2{
+  font-size:4rem;font-weight:800;
+  background:linear-gradient(135deg,var(--pri-l),var(--acc));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin:12px 0;
+}
+.res .lb2{font-size:.95rem;color:var(--text2);margin-bottom:20px}
+
+/* ===== Favorites ===== */
+.fi{
+  background:var(--card);border-radius:var(--r);padding:14px 16px;
+  margin-bottom:10px;box-shadow:var(--sh);cursor:pointer;
+  transition:all .15s;border:1px solid var(--border);
+}
+.fi:hover{box-shadow:var(--sh2);border-color:var(--pri-l);transform:translateY(-1px)}
+.fi .sj{
+  display:inline-block;background:var(--pri-bg);color:var(--pri-l);
+  font-size:.7rem;padding:3px 10px;border-radius:6px;font-weight:700;margin-bottom:6px;
+  border:1px solid rgba(124,58,237,.2);
+}
+.fi .q2{font-size:.86rem;line-height:1.6;color:var(--text)}
+.fi .a2{font-size:.76rem;color:var(--ok);margin-top:4px;font-weight:600}
+
+/* ===== Search ===== */
+.search{
+  width:100%;padding:12px 16px;
+  border:2px solid var(--border);border-radius:12px;
+  font-size:.88rem;margin-bottom:18px;outline:none;
+  transition:all .2s;
+  background:var(--card);color:var(--text);
+  font-family:inherit;
+}
+.search::placeholder{color:var(--text3)}
+.search:focus{border-color:var(--pri);box-shadow:0 0 0 4px rgba(124,58,237,.15)}
+
+/* ===== Toast ===== */
+.toast{
+  position:fixed;top:20px;right:20px;padding:12px 22px;
+  border-radius:12px;color:#fff;font-size:.84rem;font-weight:600;
+  z-index:999;animation:slideIn .35s cubic-bezier(.16,1,.3,1);
+  box-shadow:0 8px 32px rgba(0,0,0,.3);
+  backdrop-filter:blur(12px);
+}
+.t-ok{background:rgba(52,211,153,.9)}
+.t-er{background:rgba(248,113,113,.9)}
+.t-in{background:rgba(124,58,237,.9)}
+@keyframes slideIn{from{transform:translateX(80px) scale(.9);opacity:0}to{transform:translateX(0) scale(1);opacity:1}}
+
+/* ===== Modal ===== */
+.ov{
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,.6);z-index:200;
+  display:none;align-items:center;justify-content:center;
+  backdrop-filter:blur(6px);
+}
+.ov.show{display:flex}
+.mdl{
+  background:var(--card);border-radius:var(--r);padding:28px;
+  max-width:420px;width:90%;max-height:80vh;overflow-y:auto;
+  box-shadow:var(--sh2);border:1px solid var(--border);
+}
+.mdl h3{margin-bottom:12px;font-size:1.1rem;font-weight:700}
+
+/* ===== Utility ===== */
+.hdn{display:none!important}
+
+/* ===== Responsive ===== */
+@media(max-width:500px){
+  .app{padding:10px 8px 60px}
+  .sgrid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}
+  .qa{padding:16px}
+  .qt{padding:12px;font-size:.88rem}
+  .hdr{padding:20px}
+  .hdr h1{font-size:1.25rem}
+  .opt{padding:10px 12px}
+  .btn{padding:9px 16px}
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- Header -->
+  <div class="hdr">
+    <h1>🏥 温医2026十门联考题库</h1>
+    <p id="hdrP">加载中...</p>
+    <div class="stats" id="hdrStats"></div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs" id="tabs"></div>
+
+  <!-- Home Page -->
+  <div id="P_home">
+    <input type="text" class="search" id="searchInput" placeholder="🔍 搜索题目关键词..." onkeydown="if(event.key==='Enter')W.search(this.value)">
+    <div class="sgrid" id="sg"></div>
+  </div>
+
+  <!-- Question Page -->
+  <div id="P_q" class="hdn">
+    <div class="qa">
+      <div class="qi">
+        <div class="nfo" id="qI"></div>
+        <div class="acts">
+          <span class="timer hdn" id="tmr"></span>
+          <button class="sbtn" id="stb" onclick="W.star()">☆</button>
+        </div>
+      </div>
+      <div class="qt" id="qT"></div>
+      <div class="opts" id="qO"></div>
+      <div id="aS" class="hdn"></div>
+    </div>
+    <div class="br">
+      <button class="btn bo" onclick="W.prev()">← 上一题</button>
+      <button class="btn bp" id="ckB" onclick="W.check()">确认答案</button>
+      <button class="btn bo" onclick="W.next()">下一题 →</button>
+    </div>
+    <details style="margin-top:14px">
+      <summary style="cursor:pointer;font-size:.82rem;color:var(--text2);font-weight:600;padding:8px 0">📋 题目导航</summary>
+      <div class="qgr" id="qG"></div>
+    </details>
+  </div>
+
+  <!-- Result Page -->
+  <div id="P_r" class="hdn">
+    <div class="qa">
+      <div class="res">
+        <h2>🎉 考试完成！</h2>
+        <div class="sc2" id="rS">0%</div>
+        <div class="lb2" id="rD"></div>
+        <div class="br" style="justify-content:center">
+          <button class="btn bp" onclick="W.review()">📋 查看答题</button>
+          <button class="btn bo" onclick="W.setMode('home')">🏠 返回首页</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Favorites Page -->
+  <div id="P_f" class="hdn">
+    <h2 style="margin-bottom:14px;font-size:1.1rem;font-weight:700">⭐ 收藏题目</h2>
+    <div id="fL"></div>
+  </div>
+
+  <!-- Data Page -->
+  <div id="P_d" class="hdn">
+    <div class="qa">
+      <h3 style="margin-bottom:14px;font-weight:700">💾 数据管理</h3>
+      <p style="font-size:.82rem;color:var(--text2);margin-bottom:16px;line-height:1.6">
+        数据自动保存在浏览器 LocalStorage 中。导出功能可将做题记录与收藏备份为 JSON 文件。
+      </p>
+      <div class="br">
+        <button class="btn bp" onclick="W.exp()">📥 导出备份</button>
+        <button class="btn bo" onclick="W.imp()">📤 导入备份</button>
+        <button class="btn be" onclick="W.clr()">🗑️ 清除记录</button>
+      </div>
+      <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border)">
+        <h4 style="font-size:.9rem;margin-bottom:10px;font-weight:700">📂 加载更多题目</h4>
+        <p style="font-size:.78rem;color:var(--text2);margin-bottom:10px;line-height:1.5">
+          选择含题目的 .txt 文件（从 .docx 复制出的纯文本，答案格式如 "（A）"）
+        </p>
+        <input type="file" id="qFile" accept=".txt,.json" multiple
+          style="color:var(--text2);font-size:.82rem;margin-bottom:8px">
+        <button class="btn bp" style="margin-top:8px" onclick="W.loadFiles()">📁 加载题目</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Import Modal -->
+<div class="ov" id="impM">
+  <div class="mdl">
+    <h3>📤 导入数据备份</h3>
+    <p style="font-size:.84rem;color:var(--text2);margin-bottom:14px">选择之前导出的 JSON 备份文件</p>
+    <input type="file" id="impF" accept=".json" style="width:100%;margin-bottom:16px;color:var(--text2)">
+    <div class="br">
+      <button class="btn bp" onclick="W.doImp()">确认导入</button>
+      <button class="btn bo" onclick="document.getElementById('impM').classList.remove('show')">取消</button>
+    </div>
+  </div>
+</div>
+
+<!-- ★★★ CRITICAL: Load data.js BEFORE the app script ★★★ -->
+<script src="data.js"></script>
+
+<script>
+// ===== APPLICATION =====
+var W = (function(){
+"use strict";
+
+var QUESTIONS = [];
+var SUBJECTS = [];
+var ICONS = ['🦴','🛡️','🔬','🦠','🧬','⚗️','🔭','💊','❤️','⚕️','📘','📗','📙','📕'];
+
+var S = {
+  mode:'home', subj:'all', qi:0, qs:[], sel:null, done:false,
+  rec:{}, fav:{}, et:null, etime:0, ea:{}
+};
+
+// ===== Parser =====
+function pq(text, starred){
+  var ans='', am=text.match(/（([A-E])）/);
+  if(am) ans=am[1];
+  var d=text.replace(/（[A-E]）/g,'（ ）'), opts={}, qt=d;
+  var os=d.search(/[A-E][.、]/);
+  if(os>0){
+    qt=d.substring(0,os).trim();
+    var op=d.substring(os), re=/([A-E])[.、]([\s\S]*?)(?=\s*[A-E][.、]|$)/g, m;
+    while((m=re.exec(op))!==null) opts[m[1]]=m[2].trim();
+  }
+  return {text:qt, options:opts, answer:ans, explanation:'', starred:!!starred};
+}
+
+function parseLines(subject, si, lines){
+  var cur=null, num=0, qs=[];
+  lines.forEach(function(L){
+    L=L.trim(); if(!L) return;
+    if(/^解析[：:]/.test(L)){if(cur)cur.explanation=L.replace(/^解析[：:]\s*/,'');return;}
+    if(/^\?[：:]/.test(L)){if(cur)cur.explanation=(cur.explanation||'')+' '+L.replace(/^\?[：:]\s*/,'');return;}
+    var starred=/★/.test(L), cl=L.replace(/★+\s*/g,'');
+    var nm=cl.match(/^(\d+)[、.．]\s*(.*)/);
+    var body=nm?nm[2]:null;
+    if(!body){
+      if(/（[A-E]）/.test(cl)&&/[A-E][.、]/.test(cl)){
+        if(cur) qs.push(cur); num++; cur=pq(cl,starred);
+        cur.subject=subject; cur.subjectIndex=si; cur.number=num; return;
+      }
+      if(cur&&/^[A-E][.、]/.test(L)) cur.options[L[0]]=L.substring(2).trim();
+      return;
+    }
+    if(cur) qs.push(cur); num++; cur=pq(body,starred);
+    cur.subject=subject; cur.subjectIndex=si; cur.number=num;
+  });
+  if(cur) qs.push(cur);
+  return qs;
+}
+
+// ===== Data Loading =====
+function loadData(){
+  if(window.FULL_QUESTION_DATA && window.FULL_QUESTION_DATA.length){
+    QUESTIONS = window.FULL_QUESTION_DATA;
+  } else if(window._QUESTIONS && window._QUESTIONS.length){
+    QUESTIONS = window._QUESTIONS;
+  }
+  QUESTIONS.forEach(function(q,i){ if(q.id===undefined) q.id=i; });
+  rebuildSubjects();
+}
+
+function rebuildSubjects(){
+  var seen={}; SUBJECTS=[];
+  QUESTIONS.forEach(function(q){
+    if(!seen[q.subject]){seen[q.subject]=1; SUBJECTS.push(q.subject);}
+  });
+}
+
+// ===== Storage =====
+function save(){try{localStorage.setItem('wy4',JSON.stringify({r:S.rec,f:S.fav}));}catch(e){}}
+function load(){try{var d=JSON.parse(localStorage.getItem('wy4'));if(d){S.rec=d.r||{};S.fav=d.f||{};}}catch(e){}}
+
+// ===== Toast =====
+function toast(m,t){
+  var e=document.createElement('div');
+  e.className='toast t-'+(t||'in'); e.textContent=m;
+  document.body.appendChild(e);
+  setTimeout(function(){e.remove();},2500);
+}
+
+// ===== Init =====
+function init(){
+  loadData(); load();
+  renderTabs(); renderHome(); updateHdr();
+  setInterval(save, 5000);
+  console.log('App loaded: '+QUESTIONS.length+' questions, '+SUBJECTS.length+' subjects');
+}
+
+function updateHdr(){
+  var t=QUESTIONS.length, d=Object.keys(S.rec).length, f=Object.keys(S.fav).length;
+  var correct=0; Object.values(S.rec).forEach(function(r){correct+=r.c||0;});
+  document.getElementById('hdrP').textContent =
+    '共 '+t+' 题 · '+SUBJECTS.length+' 科 · 已做 '+d+' 题 · 收藏 '+f+' 题';
+
+  var statsHtml='';
+  SUBJECTS.forEach(function(s,i){
+    var st=QUESTIONS.filter(function(q){return q.subject===s;}).length;
+    var sd=QUESTIONS.filter(function(q){return q.subject===s&&S.rec[q.id];}).length;
+    statsHtml+='<span class="stat">'+(ICONS[i]||'📘')+' '+s.substring(0,3)+' '+sd+'/'+st+'</span>';
+  });
+  document.getElementById('hdrStats').innerHTML=statsHtml;
+}
+
+// ===== Tabs =====
+function renderTabs(){
+  var modes = [
+    ['home','🏠 首页'],['browse','📖 背题'],['practice','✏️ 刷题'],
+    ['exam','📝 模拟考试'],['favs','⭐ 收藏'],['data','💾 数据']
+  ];
+  var h='';
+  modes.forEach(function(m){
+    h+='<button class="tab'+(S.mode===m[0]?' on':'')+'" onclick="W.setMode(\''+m[0]+'\')">'+m[1]+'</button>';
+  });
+  document.getElementById('tabs').innerHTML=h;
+}
+
+function showPage(p){
+  ['P_home','P_q','P_r','P_f','P_d'].forEach(function(id){
+    document.getElementById(id).classList.add('hdn');
+  });
+  document.getElementById(p).classList.remove('hdn');
+}
+
+// ===== Home =====
+function renderHome(){
+  var h='', t=QUESTIONS.length, d=Object.keys(S.rec).length;
+  h+='<div class="sc'+(S.subj==='all'?' on':'')+'" onclick="W.pick(\'all\')">';
+  h+='<div class="ic">📚</div><h3>全部科目</h3>';
+  h+='<div class="p">'+d+' / '+t+'</div>';
+  h+='<div class="bar"><div class="f" style="width:'+(t?d/t*100:0)+'%"></div></div></div>';
+
+  SUBJECTS.forEach(function(s,i){
+    var st=QUESTIONS.filter(function(q){return q.subject===s;}).length;
+    var sd=QUESTIONS.filter(function(q){return q.subject===s&&S.rec[q.id];}).length;
+    var icon=ICONS[i%ICONS.length]||'📘';
+    h+='<div class="sc'+(S.subj===s?' on':'')+'" onclick="W.pick(\''+s.replace(/'/g,"\\'")+'\')"><div class="ic">'+icon+'</div><h3>'+s+'</h3><div class="p">'+sd+' / '+st+'</div><div class="bar"><div class="f" style="width:'+(st?sd/st*100:0)+'%"></div></div></div>';
+  });
+  document.getElementById('sg').innerHTML=h;
+}
+
+// ===== Modes =====
+function setMode(mode){
+  S.mode=mode;
+  if(S.et){clearInterval(S.et);S.et=null;}
+  renderTabs();
+  document.getElementById('tmr').classList.add('hdn');
+  if(mode==='home'){showPage('P_home');renderHome();}
+  else if(mode==='browse'||mode==='practice'){setupQs();showPage('P_q');renderQ();}
+  else if(mode==='exam'){startExam();}
+  else if(mode==='favs'){showPage('P_f');renderFavs();}
+  else if(mode==='data'){showPage('P_d');}
+  updateHdr(); window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function setupQs(){
+  S.qs = S.subj==='all' ? QUESTIONS.slice() : QUESTIONS.filter(function(q){return q.subject===S.subj;});
+  S.qi=0; S.sel=null; S.done=false;
+}
+
+function pick(subj){
+  S.subj=subj; renderHome();
+  if(S.mode==='home') setMode('browse');
+  else { setupQs(); renderQ(); }
+}
+
+// ===== Question Rendering =====
+function renderQ(){
+  if(!S.qs.length){
+    document.getElementById('qT').textContent='暂无题目。请在首页选择一个科目。';
+    document.getElementById('qO').innerHTML='';
+    document.getElementById('aS').classList.add('hdn');
+    return;
+  }
+  var q=S.qs[S.qi]; if(!q) return;
+  S.sel=null; S.done=false;
+
+  document.getElementById('qI').innerHTML =
+    '第 <b>'+(S.qi+1)+' / '+S.qs.length+'</b> 题　'+q.subject+' #'+q.number;
+
+  var txt=q.text;
+  if(q.starred) txt='<span class="bd">★ 重点</span>'+txt;
+  document.getElementById('qT').innerHTML=txt;
+
+  var keys=Object.keys(q.options||{}).sort(), oh='';
+  keys.forEach(function(k){
+    oh+='<div class="opt" data-k="'+k+'" onclick="W.pickO(\''+k+'\')">';
+    oh+='<span class="lb">'+k+'</span><span>'+q.options[k]+'</span></div>';
+  });
+  document.getElementById('qO').innerHTML=oh;
+  document.getElementById('aS').classList.add('hdn');
+
+  var btn=document.getElementById('ckB');
+  btn.textContent='确认答案'; btn.disabled=false; btn.className='btn bp';
+
+  var sb=document.getElementById('stb');
+  sb.textContent=S.fav[q.id]?'★':'☆';
+  sb.className='sbtn'+(S.fav[q.id]?' on':'');
+
+  if(S.mode==='browse'){showAns(q,null);btn.classList.add('hdn');}
+  else{btn.classList.remove('hdn');}
+
+  renderGrid(); save();
+}
+
+function pickO(k){
+  if(S.done && S.mode!=='browse') return;
+  S.sel=k;
+  document.querySelectorAll('.opt').forEach(function(e){
+    e.classList.toggle('sel', e.dataset.k===k);
+  });
+}
+
+function check(){
+  if(!S.sel || S.done) return;
+  var q=S.qs[S.qi]; S.done=true;
+  var ok = S.sel===q.answer;
+
+  if(!S.rec[q.id]) S.rec[q.id]={a:0,c:0,w:0,l:''};
+  S.rec[q.id].a++;
+  if(ok) S.rec[q.id].c++; else S.rec[q.id].w++;
+  S.rec[q.id].l=S.sel;
+
+  document.querySelectorAll('.opt').forEach(function(e){
+    var k=e.dataset.k; e.classList.remove('sel');
+    if(k===q.answer) e.classList.add(ok?'ok':'sh');
+    else if(k===S.sel && !ok) e.classList.add('no');
+  });
+
+  showAns(q,ok);
+  var btn=document.getElementById('ckB');
+  btn.textContent=ok?'✅ 正确！':'❌ 错误';
+  btn.className='btn '+(ok?'bg':'be');
+  btn.disabled=true;
+
+  if(S.mode==='exam') S.ea[S.qi]={s:S.sel,ok:ok};
+  renderGrid(); updateHdr(); save();
+}
+
+function showAns(q,ok){
+  var cls = ok===false ? 'ab wb' : 'ab';
+  var h='<div class="'+cls+'"><h4>正确答案：'+q.answer+'</h4>';
+  if(q.explanation) h+='<div class="ex"><b>解析：</b>'+q.explanation+'</div>';
+  var r=S.rec[q.id];
+  if(r) h+='<div class="hi">📊 已做 '+r.a+' 次，正确 '+r.c+' 次，错误 '+r.w+' 次</div>';
+  h+='</div>';
+  var s=document.getElementById('aS');
+  s.innerHTML=h; s.classList.remove('hdn');
+}
+
+function prev(){if(S.qi>0){S.qi--;renderQ();window.scrollTo({top:0,behavior:'smooth'});}}
+function next(){
+  if(S.qi<S.qs.length-1){S.qi++;renderQ();window.scrollTo({top:0,behavior:'smooth'});}
+  else if(S.mode==='exam') finishExam();
+}
+function jump(i){S.qi=i;renderQ();window.scrollTo({top:0,behavior:'smooth'});}
+
+function renderGrid(){
+  var h='';
+  S.qs.forEach(function(q,i){
+    var c='qg';
+    if(i===S.qi) c+=' cur';
+    var r=S.rec[q.id];
+    if(r&&r.l) c += r.l===q.answer ? ' dn' : ' fl';
+    if(S.fav[q.id]) c+=' fv';
+    h+='<div class="'+c+'" onclick="W.jump('+i+')">'+(i+1)+'</div>';
+  });
+  document.getElementById('qG').innerHTML=h;
+}
+
+// ===== Star =====
+function star(){
+  var q=S.qs[S.qi]; if(!q) return;
+  if(S.fav[q.id]) delete S.fav[q.id]; else S.fav[q.id]=1;
+  var sb=document.getElementById('stb');
+  sb.textContent=S.fav[q.id]?'★':'☆';
+  sb.className='sbtn'+(S.fav[q.id]?' on':'');
+  renderGrid(); updateHdr(); save();
+}
+
+// ===== Favorites =====
+function renderFavs(){
+  var fqs=QUESTIONS.filter(function(q){return S.fav[q.id];});
+  if(!fqs.length){
+    document.getElementById('fL').innerHTML='<div class="qa" style="text-align:center;padding:40px"><p style="color:var(--text3);font-size:.9rem">暂无收藏题目</p><p style="color:var(--text3);font-size:.78rem;margin-top:8px">做题时点击 ☆ 即可收藏</p></div>';
+    return;
+  }
+  var h='<div class="br" style="margin-bottom:14px"><button class="btn bp" style="font-size:.8rem" onclick="W.favMode(\'browse\')">📖 背题模式</button><button class="btn bo" style="font-size:.8rem" onclick="W.favMode(\'practice\')">✏️ 刷题模式</button></div>';
+  fqs.forEach(function(q,i){
+    h+='<div class="fi" onclick="W.openFav('+q.id+')"><span class="sj">'+q.subject+'</span><div class="q2">'+(i+1)+'. '+q.text+'</div><div class="a2">答案：'+q.answer+'</div></div>';
+  });
+  document.getElementById('fL').innerHTML=h;
+}
+
+function openFav(id){
+  var q=QUESTIONS.find(function(x){return x.id===id;});
+  if(!q) return;
+  S.qs=[q]; S.qi=0; S.mode='browse';
+  showPage('P_q'); document.getElementById('tmr').classList.add('hdn'); renderQ();
+}
+
+function favMode(m){
+  S.qs=QUESTIONS.filter(function(q){return S.fav[q.id];});
+  S.qi=0; S.mode=m;
+  showPage('P_q'); document.getElementById('tmr').classList.add('hdn');
+  renderTabs(); renderQ();
+}
+
+// ===== Exam =====
+function startExam(){
+  var sh=QUESTIONS.slice().sort(function(){return Math.random()-.5;});
+  S.qs=sh.slice(0,Math.min(100,sh.length));
+  S.qi=0; S.ea={}; S.etime=7200; S.mode='exam';
+  showPage('P_q');
+  var t=document.getElementById('tmr'); t.classList.remove('hdn');
+  updTimer();
+  S.et=setInterval(function(){S.etime--;updTimer();if(S.etime<=0)finishExam();},1000);
+  renderTabs(); renderQ();
+}
+
+function updTimer(){
+  var m=Math.floor(S.etime/60), s=S.etime%60;
+  document.getElementById('tmr').textContent='⏱ '+(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+}
+
+function finishExam(){
+  if(S.et){clearInterval(S.et);S.et=null;}
+  var ok=0, t=S.qs.length;
+  Object.keys(S.ea).forEach(function(k){if(S.ea[k].ok)ok++;});
+  var pct=t>0?Math.round(ok/t*100):0;
+  showPage('P_r');
+  document.getElementById('rS').textContent=pct+'%';
+  document.getElementById('rD').textContent='共 '+t+' 题，正确 '+ok+' 题，错误 '+(t-ok)+' 题';
+}
+
+function review(){
+  S.mode='browse'; S.qi=0;
+  showPage('P_q'); document.getElementById('tmr').classList.add('hdn'); renderQ();
+}
+
+// ===== Search =====
+function search(v){
+  v=v.trim(); if(!v||v.length<2) return;
+  var rs=QUESTIONS.filter(function(q){
+    return q.text.indexOf(v)>=0 || Object.values(q.options||{}).some(function(o){return o.indexOf(v)>=0;});
+  });
+  if(rs.length){
+    S.qs=rs; S.qi=0; S.mode='browse';
+    showPage('P_q'); document.getElementById('tmr').classList.add('hdn');
+    renderTabs(); renderQ();
+    toast('找到 '+rs.length+' 道相关题目','ok');
+  } else {
+    toast('未找到相关题目','er');
+  }
+}
+
+// ===== Data Management =====
+function exp(){
+  var d={records:S.rec,favs:S.fav,date:new Date().toISOString(),version:4};
+  var b=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(b);
+  a.download='温医题库备份_'+new Date().toLocaleDateString('zh-CN')+'.json';
+  a.click(); URL.revokeObjectURL(a.href);
+  toast('数据已导出！','ok');
+}
+
+function imp(){document.getElementById('impM').classList.add('show');}
+
+function doImp(){
+  var f=document.getElementById('impF').files[0];
+  if(!f){toast('请选择文件','er');return;}
+  var r=new FileReader();
+  r.onload=function(e){
+    try{
+      var d=JSON.parse(e.target.result);
+      if(d.records) S.rec=d.records;
+      if(d.favs) S.fav=d.favs;
+      if(d.favorites&&Array.isArray(d.favorites)) d.favorites.forEach(function(id){S.fav[id]=1;});
+      // Also migrate from old storage key
+      if(d.r) S.rec=d.r;
+      if(d.f) S.fav=d.f;
+      save();
+      document.getElementById('impM').classList.remove('show');
+      renderHome(); updateHdr();
+      toast('导入成功！','ok');
+    }catch(err){toast('文件格式错误','er');}
+  };
+  r.readAsText(f);
+}
+
+function clr(){
+  if(confirm('确定要清除所有做题记录和收藏吗？此操作不可恢复。')){
+    S.rec={}; S.fav={}; save();
+    renderHome(); updateHdr();
+    toast('已清除所有记录','in');
+  }
+}
+
+// ===== Load Files =====
+function loadFiles(){
+  var files=document.getElementById('qFile').files;
+  if(!files.length){toast('请选择文件','er');return;}
+  var loaded=0, totalNew=0;
+  Array.from(files).forEach(function(file){
+    var reader=new FileReader();
+    reader.onload=function(e){
+      var text=e.target.result;
+      var lines=text.split('\n');
+      var subjectName=file.name.replace(/\.[^.]+$/,'').replace(/基综[《》]/g,'').replace(/[《》]/g,'');
+      var firstLine=lines[0].trim();
+      var titleMatch=firstLine.match(/[《](.+?)[》]/);
+      if(titleMatch) subjectName=titleMatch[1];
+      var si=SUBJECTS.length;
+      var newQs=parseLines(subjectName,si,lines);
+      var maxId=QUESTIONS.reduce(function(m,q){return Math.max(m,q.id||0);},0);
+      newQs.forEach(function(q){q.id=++maxId;});
+      var existingTexts=new Set(QUESTIONS.map(function(q){return q.text;}));
+      var unique=newQs.filter(function(q){return !existingTexts.has(q.text);});
+      QUESTIONS.push.apply(QUESTIONS,unique);
+      totalNew+=unique.length;
+      rebuildSubjects();
+      loaded++;
+      if(loaded===files.length){
+        renderHome(); updateHdr();
+        toast('成功加载 '+totalNew+' 道新题目','ok');
+      }
+    };
+    reader.readAsText(file);
+  });
+}
+
+function home(){showPage('P_home');S.mode='home';renderTabs();renderHome();}
+
+// ===== Keyboard shortcuts =====
+document.addEventListener('keydown', function(e){
+  if(S.mode==='browse'||S.mode==='practice'||S.mode==='exam'){
+    if(e.key==='ArrowLeft'||e.key==='a') prev();
+    else if(e.key==='ArrowRight'||e.key==='d') next();
+    else if(e.key==='Enter'&&!S.done) check();
+    else if('ABCDE'.indexOf(e.key.toUpperCase())>=0&&!S.done) pickO(e.key.toUpperCase());
+  }
+});
+
+document.addEventListener('DOMContentLoaded', init);
+
+return {
+  setMode:setMode, pick:pick, pickO:pickO, check:check,
+  prev:prev, next:next, jump:jump, star:star,
+  search:search, exp:exp, imp:imp, doImp:doImp, clr:clr,
+  openFav:openFav, favMode:favMode, review:review,
+  home:home, loadFiles:loadFiles
+};
+})();
+</script>
+
+</body>
+</html>
